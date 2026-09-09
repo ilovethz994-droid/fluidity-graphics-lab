@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { AuthPage } from "@/components/lumbyte/auth-page";
+export const Route = createFileRoute("/register")({ head:()=>({meta:[{title:"创建账号｜Lumbyte OS"},{name:"description",content:"创建 Lumbyte OS 账号。"},{property:"og:title",content:"创建账号｜Lumbyte OS"},{property:"og:description",content:"创建 Lumbyte OS 创业决策工作区账号。"}]}), component:()=> <AuthPage mode="register"/> });

@@ -1,0 +1,5 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { AppShell, PreviewNotice } from "@/components/lumbyte/app-shell";
+import { DecisionView, EvidenceView, FinancialView, ModuleView, ReportView, WorkbenchView } from "@/components/lumbyte/product-pages";
+export const Route = createFileRoute("/workspace/$section")({ head:({params})=>({meta:[{title:`${params.section}｜Lumbyte OS`},{name:"description",content:"Lumbyte OS 决策工作区设计预览。"},{property:"og:title",content:"Lumbyte OS 决策工作区"},{property:"og:description",content:"证据驱动的创业决策工作区。"}]}), component:Workspace });
+function Workspace(){const {section}=Route.useParams(); let view; if(section==="decision")view=<DecisionView/>;else if(section==="workbench")view=<WorkbenchView/>;else if(section==="financial")view=<FinancialView/>;else if(section==="evidence")view=<EvidenceView/>;else if(section==="report")view=<ReportView/>;else view=<ModuleView section={section}/>;return <AppShell><PreviewNotice/>{view}</AppShell>}
