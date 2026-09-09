@@ -14,9 +14,12 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AiDataRouteImport } from './routes/ai-data'
 import { Route as DataRouteImport } from './routes/data'
 import { Route as DecisionSystemRouteImport } from './routes/decision-system'
+import { Route as DesignReviewRouteImport } from './routes/design-review'
 import { Route as EvidenceSystemRouteImport } from './routes/evidence-system'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MethodRouteImport } from './routes/method'
+import { Route as PlansRouteImport } from './routes/plans'
 import { Route as PricingPlanRouteImport } from './routes/pricing-plan'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProductRouteImport } from './routes/product'
@@ -52,9 +55,19 @@ const DecisionSystemRoute = DecisionSystemRouteImport.update({
   path: '/decision-system',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DesignReviewRoute = DesignReviewRouteImport.update({
+  id: '/design-review',
+  path: '/design-review',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EvidenceSystemRoute = EvidenceSystemRouteImport.update({
   id: '/evidence-system',
   path: '/evidence-system',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -65,6 +78,11 @@ const LoginRoute = LoginRouteImport.update({
 const MethodRoute = MethodRouteImport.update({
   id: '/method',
   path: '/method',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlansRoute = PlansRouteImport.update({
+  id: '/plans',
+  path: '/plans',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingPlanRoute = PricingPlanRouteImport.update({
@@ -119,9 +137,12 @@ export interface FileRoutesByFullPath {
   '/ai-data': typeof AiDataRoute
   '/data': typeof DataRoute
   '/decision-system': typeof DecisionSystemRoute
+  '/design-review': typeof DesignReviewRoute
   '/evidence-system': typeof EvidenceSystemRoute
+  '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/method': typeof MethodRoute
+  '/plans': typeof PlansRoute
   '/pricing-plan': typeof PricingPlanRoute
   '/privacy': typeof PrivacyRoute
   '/product': typeof ProductRoute
@@ -138,9 +159,12 @@ export interface FileRoutesByTo {
   '/ai-data': typeof AiDataRoute
   '/data': typeof DataRoute
   '/decision-system': typeof DecisionSystemRoute
+  '/design-review': typeof DesignReviewRoute
   '/evidence-system': typeof EvidenceSystemRoute
+  '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/method': typeof MethodRoute
+  '/plans': typeof PlansRoute
   '/pricing-plan': typeof PricingPlanRoute
   '/privacy': typeof PrivacyRoute
   '/product': typeof ProductRoute
@@ -158,9 +182,12 @@ export interface FileRoutesById {
   '/ai-data': typeof AiDataRoute
   '/data': typeof DataRoute
   '/decision-system': typeof DecisionSystemRoute
+  '/design-review': typeof DesignReviewRoute
   '/evidence-system': typeof EvidenceSystemRoute
+  '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/method': typeof MethodRoute
+  '/plans': typeof PlansRoute
   '/pricing-plan': typeof PricingPlanRoute
   '/privacy': typeof PrivacyRoute
   '/product': typeof ProductRoute
@@ -179,9 +206,12 @@ export interface FileRouteTypes {
     | '/ai-data'
     | '/data'
     | '/decision-system'
+    | '/design-review'
     | '/evidence-system'
+    | '/how-it-works'
     | '/login'
     | '/method'
+    | '/plans'
     | '/pricing-plan'
     | '/privacy'
     | '/product'
@@ -198,9 +228,12 @@ export interface FileRouteTypes {
     | '/ai-data'
     | '/data'
     | '/decision-system'
+    | '/design-review'
     | '/evidence-system'
+    | '/how-it-works'
     | '/login'
     | '/method'
+    | '/plans'
     | '/pricing-plan'
     | '/privacy'
     | '/product'
@@ -217,9 +250,12 @@ export interface FileRouteTypes {
     | '/ai-data'
     | '/data'
     | '/decision-system'
+    | '/design-review'
     | '/evidence-system'
+    | '/how-it-works'
     | '/login'
     | '/method'
+    | '/plans'
     | '/pricing-plan'
     | '/privacy'
     | '/product'
@@ -237,9 +273,12 @@ export interface RootRouteChildren {
   AiDataRoute: typeof AiDataRoute
   DataRoute: typeof DataRoute
   DecisionSystemRoute: typeof DecisionSystemRoute
+  DesignReviewRoute: typeof DesignReviewRoute
   EvidenceSystemRoute: typeof EvidenceSystemRoute
+  HowItWorksRoute: typeof HowItWorksRoute
   LoginRoute: typeof LoginRoute
   MethodRoute: typeof MethodRoute
+  PlansRoute: typeof PlansRoute
   PricingPlanRoute: typeof PricingPlanRoute
   PrivacyRoute: typeof PrivacyRoute
   ProductRoute: typeof ProductRoute
@@ -288,11 +327,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DecisionSystemRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/design-review': {
+      id: '/design-review'
+      path: '/design-review'
+      fullPath: '/design-review'
+      preLoaderRoute: typeof DesignReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/evidence-system': {
       id: '/evidence-system'
       path: '/evidence-system'
       fullPath: '/evidence-system'
       preLoaderRoute: typeof EvidenceSystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -307,6 +360,13 @@ declare module '@tanstack/react-router' {
       path: '/method'
       fullPath: '/method'
       preLoaderRoute: typeof MethodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/plans': {
+      id: '/plans'
+      path: '/plans'
+      fullPath: '/plans'
+      preLoaderRoute: typeof PlansRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing-plan': {
@@ -381,9 +441,12 @@ const rootRouteChildren: RootRouteChildren = {
   AiDataRoute: AiDataRoute,
   DataRoute: DataRoute,
   DecisionSystemRoute: DecisionSystemRoute,
+  DesignReviewRoute: DesignReviewRoute,
   EvidenceSystemRoute: EvidenceSystemRoute,
+  HowItWorksRoute: HowItWorksRoute,
   LoginRoute: LoginRoute,
   MethodRoute: MethodRoute,
+  PlansRoute: PlansRoute,
   PricingPlanRoute: PricingPlanRoute,
   PrivacyRoute: PrivacyRoute,
   ProductRoute: ProductRoute,

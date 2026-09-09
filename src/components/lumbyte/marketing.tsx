@@ -10,7 +10,7 @@ import { GlassCard, GlassPanel, StatusBadge } from "./primitives";
 
 type LucideIcon = typeof FileSearch;
 
-const nav = [["产品", "/product"], ["工作方式", "/method"], ["真实数据", "/data"], ["证据体系", "/evidence-system"], ["决策系统", "/decision-system"], ["方案", "/pricing-plan"]] as const;
+const nav = [["产品", "/product"], ["工作方式", "/how-it-works"], ["真实数据", "/data"], ["证据体系", "/evidence-system"], ["决策系统", "/decision-system"], ["方案", "/plans"]] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -204,7 +204,7 @@ export function HomePage() {
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <Button size="lg" asChild><Link to="/register">开始分析 <ArrowRight /></Link></Button>
-            <Button size="lg" variant="outline" asChild><Link to="/method">了解工作方式</Link></Button>
+            <Button size="lg" variant="outline" asChild><Link to="/how-it-works">了解工作方式</Link></Button>
           </div>
 
           {/* 第一屏即可读完：决策链路 + 真实数据规模 */}
@@ -732,8 +732,8 @@ export function ContentPage({ type }: { type: string }) {
 
 function Footer() {
   const cols = [
-    ["产品", [["产品能力", "/product"], ["工作方式", "/method"], ["真实数据", "/data"], ["证据体系", "/evidence-system"], ["决策系统", "/decision-system"]]],
-    ["公司", [["关于", "/about"]]],
+    ["产品", [["产品能力", "/product"], ["工作方式", "/how-it-works"], ["真实数据", "/data"], ["证据体系", "/evidence-system"], ["决策系统", "/decision-system"]]],
+    ["公司", [["关于", "/about"], ["方案", "/plans"]]],
     ["法律", [["用户协议", "/terms"], ["隐私政策", "/privacy"], ["AI 与数据声明", "/ai-data"]]],
     ["账户", [["登录", "/login"], ["开始分析", "/register"]]],
   ] as const;
