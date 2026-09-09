@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { ContentPage } from "@/components/lumbyte/marketing";
+export const Route=createFileRoute("/evidence-system")({head:()=>({meta:[{title:"证据体系｜Lumbyte OS"},{name:"description",content:"了解 Lumbyte 的证据分类体系。"},{property:"og:title",content:"证据体系｜Lumbyte OS"},{property:"og:description",content:"严格区分事实、信号、估算、推断与未知。"}]}),component:()=> <ContentPage type="evidence-system"/>});

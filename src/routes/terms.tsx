@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { ContentPage } from "@/components/lumbyte/marketing";
+export const Route=createFileRoute("/terms")({head:()=>({meta:[{title:"使用条款｜Lumbyte OS"},{name:"description",content:"Lumbyte OS 使用条款。"},{property:"og:title",content:"使用条款｜Lumbyte OS"},{property:"og:description",content:"Lumbyte OS 使用条款。"}]}),component:()=> <ContentPage type="terms"/>});

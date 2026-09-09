@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { CreateProjectPage } from "@/components/lumbyte/project-pages";
+export const Route = createFileRoute("/projects/new")({ head:()=>({meta:[{title:"创建项目｜Lumbyte OS"},{name:"description",content:"创建新的 Lumbyte 决策项目。"},{property:"og:title",content:"创建项目｜Lumbyte OS"},{property:"og:description",content:"从一个需要验证的创业想法开始。"}]}), component:CreateProjectPage });
