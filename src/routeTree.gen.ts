@@ -10,9 +10,19 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AiDataRouteImport } from './routes/ai-data'
+import { Route as DataRouteImport } from './routes/data'
+import { Route as DecisionSystemRouteImport } from './routes/decision-system'
+import { Route as EvidenceSystemRouteImport } from './routes/evidence-system'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as MethodRouteImport } from './routes/method'
+import { Route as PricingPlanRouteImport } from './routes/pricing-plan'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProductRouteImport } from './routes/product'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProjectsNewRouteImport } from './routes/projects.new'
 import { Route as WorkspaceSectionRouteImport } from './routes/workspace.$section'
@@ -22,9 +32,54 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiDataRoute = AiDataRouteImport.update({
+  id: '/ai-data',
+  path: '/ai-data',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DataRoute = DataRouteImport.update({
+  id: '/data',
+  path: '/data',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DecisionSystemRoute = DecisionSystemRouteImport.update({
+  id: '/decision-system',
+  path: '/decision-system',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvidenceSystemRoute = EvidenceSystemRouteImport.update({
+  id: '/evidence-system',
+  path: '/evidence-system',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MethodRoute = MethodRouteImport.update({
+  id: '/method',
+  path: '/method',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingPlanRoute = PricingPlanRouteImport.update({
+  id: '/pricing-plan',
+  path: '/pricing-plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductRoute = ProductRouteImport.update({
+  id: '/product',
+  path: '/product',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegisterRoute = RegisterRouteImport.update({
@@ -35,6 +90,11 @@ const RegisterRoute = RegisterRouteImport.update({
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
@@ -55,18 +115,38 @@ const WorkspaceSectionRoute = WorkspaceSectionRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ai-data': typeof AiDataRoute
+  '/data': typeof DataRoute
+  '/decision-system': typeof DecisionSystemRoute
+  '/evidence-system': typeof EvidenceSystemRoute
   '/login': typeof LoginRoute
+  '/method': typeof MethodRoute
+  '/pricing-plan': typeof PricingPlanRoute
+  '/privacy': typeof PrivacyRoute
+  '/product': typeof ProductRoute
   '/register': typeof RegisterRoute
   '/settings': typeof SettingsRoute
+  '/terms': typeof TermsRoute
   '/projects/new': typeof ProjectsNewRoute
   '/workspace/$section': typeof WorkspaceSectionRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ai-data': typeof AiDataRoute
+  '/data': typeof DataRoute
+  '/decision-system': typeof DecisionSystemRoute
+  '/evidence-system': typeof EvidenceSystemRoute
   '/login': typeof LoginRoute
+  '/method': typeof MethodRoute
+  '/pricing-plan': typeof PricingPlanRoute
+  '/privacy': typeof PrivacyRoute
+  '/product': typeof ProductRoute
   '/register': typeof RegisterRoute
   '/settings': typeof SettingsRoute
+  '/terms': typeof TermsRoute
   '/projects/new': typeof ProjectsNewRoute
   '/workspace/$section': typeof WorkspaceSectionRoute
   '/projects': typeof ProjectsIndexRoute
@@ -74,9 +154,19 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ai-data': typeof AiDataRoute
+  '/data': typeof DataRoute
+  '/decision-system': typeof DecisionSystemRoute
+  '/evidence-system': typeof EvidenceSystemRoute
   '/login': typeof LoginRoute
+  '/method': typeof MethodRoute
+  '/pricing-plan': typeof PricingPlanRoute
+  '/privacy': typeof PrivacyRoute
+  '/product': typeof ProductRoute
   '/register': typeof RegisterRoute
   '/settings': typeof SettingsRoute
+  '/terms': typeof TermsRoute
   '/projects/new': typeof ProjectsNewRoute
   '/workspace/$section': typeof WorkspaceSectionRoute
   '/projects/': typeof ProjectsIndexRoute
@@ -85,27 +175,57 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
+    | '/ai-data'
+    | '/data'
+    | '/decision-system'
+    | '/evidence-system'
     | '/login'
+    | '/method'
+    | '/pricing-plan'
+    | '/privacy'
+    | '/product'
     | '/register'
     | '/settings'
+    | '/terms'
     | '/projects/new'
     | '/workspace/$section'
     | '/projects/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
+    | '/ai-data'
+    | '/data'
+    | '/decision-system'
+    | '/evidence-system'
     | '/login'
+    | '/method'
+    | '/pricing-plan'
+    | '/privacy'
+    | '/product'
     | '/register'
     | '/settings'
+    | '/terms'
     | '/projects/new'
     | '/workspace/$section'
     | '/projects'
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/ai-data'
+    | '/data'
+    | '/decision-system'
+    | '/evidence-system'
     | '/login'
+    | '/method'
+    | '/pricing-plan'
+    | '/privacy'
+    | '/product'
     | '/register'
     | '/settings'
+    | '/terms'
     | '/projects/new'
     | '/workspace/$section'
     | '/projects/'
@@ -113,9 +233,19 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AiDataRoute: typeof AiDataRoute
+  DataRoute: typeof DataRoute
+  DecisionSystemRoute: typeof DecisionSystemRoute
+  EvidenceSystemRoute: typeof EvidenceSystemRoute
   LoginRoute: typeof LoginRoute
+  MethodRoute: typeof MethodRoute
+  PricingPlanRoute: typeof PricingPlanRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ProductRoute: typeof ProductRoute
   RegisterRoute: typeof RegisterRoute
   SettingsRoute: typeof SettingsRoute
+  TermsRoute: typeof TermsRoute
   ProjectsNewRoute: typeof ProjectsNewRoute
   WorkspaceSectionRoute: typeof WorkspaceSectionRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
@@ -130,11 +260,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-data': {
+      id: '/ai-data'
+      path: '/ai-data'
+      fullPath: '/ai-data'
+      preLoaderRoute: typeof AiDataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/data': {
+      id: '/data'
+      path: '/data'
+      fullPath: '/data'
+      preLoaderRoute: typeof DataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/decision-system': {
+      id: '/decision-system'
+      path: '/decision-system'
+      fullPath: '/decision-system'
+      preLoaderRoute: typeof DecisionSystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evidence-system': {
+      id: '/evidence-system'
+      path: '/evidence-system'
+      fullPath: '/evidence-system'
+      preLoaderRoute: typeof EvidenceSystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/method': {
+      id: '/method'
+      path: '/method'
+      fullPath: '/method'
+      preLoaderRoute: typeof MethodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing-plan': {
+      id: '/pricing-plan'
+      path: '/pricing-plan'
+      fullPath: '/pricing-plan'
+      preLoaderRoute: typeof PricingPlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product': {
+      id: '/product'
+      path: '/product'
+      fullPath: '/product'
+      preLoaderRoute: typeof ProductRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/register': {
@@ -149,6 +342,13 @@ declare module '@tanstack/react-router' {
       path: '/settings'
       fullPath: '/settings'
       preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/': {
@@ -177,9 +377,19 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AiDataRoute: AiDataRoute,
+  DataRoute: DataRoute,
+  DecisionSystemRoute: DecisionSystemRoute,
+  EvidenceSystemRoute: EvidenceSystemRoute,
   LoginRoute: LoginRoute,
+  MethodRoute: MethodRoute,
+  PricingPlanRoute: PricingPlanRoute,
+  PrivacyRoute: PrivacyRoute,
+  ProductRoute: ProductRoute,
   RegisterRoute: RegisterRoute,
   SettingsRoute: SettingsRoute,
+  TermsRoute: TermsRoute,
   ProjectsNewRoute: ProjectsNewRoute,
   WorkspaceSectionRoute: WorkspaceSectionRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
