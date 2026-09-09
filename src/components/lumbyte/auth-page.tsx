@@ -82,7 +82,7 @@ export function AuthPage({ mode }: { mode: "login" | "register" }) {
         <section className="hidden lg:block">
           <Brand />
           <p className="mt-6 text-xs font-semibold tracking-wide text-muted-foreground">创业决策智能系统</p>
-          <h1 className="mt-3 max-w-[16ch] text-[clamp(2.25rem,3vw,3.25rem)] font-semibold leading-[1.16]">
+          <h1 className="mt-3 max-w-[24ch] text-[clamp(2.25rem,3vw,3.25rem)] font-semibold leading-[1.16]">
             从一个创业想法开始，<br />建立可追溯的决策链路。
           </h1>
           <p className="mt-5 max-w-2xl text-[15px] leading-7 text-muted-foreground">
