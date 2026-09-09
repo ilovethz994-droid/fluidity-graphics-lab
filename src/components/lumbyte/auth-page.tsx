@@ -42,7 +42,7 @@ export function AuthPage({ mode }: { mode: "login" | "register" }) {
       <div className="mx-auto grid min-h-screen w-full max-w-[1600px] grid-cols-1 items-stretch lg:grid-cols-[48fr_52fr] xl:grid-cols-[56fr_44fr]">
         {/* LEFT — immersive Lumbyte visual environment (desktop / tablet) */}
         <section className="relative hidden overflow-hidden lg:flex lg:flex-col lg:justify-between lg:p-10 xl:p-12">
-          <EvidenceConstellation className="pointer-events-none absolute inset-0 h-full w-full" />
+          <EvidenceConstellation className="pointer-events-none absolute inset-0 h-full w-full [mask-image:linear-gradient(to_right,black_62%,transparent_98%)]" />
 
           <div className="relative z-10">
             <Link to="/" className="inline-flex"><Brand /></Link>
