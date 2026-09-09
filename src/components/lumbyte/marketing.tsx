@@ -670,12 +670,12 @@ export function ContentPage({ type }: { type: string }) {
 }
 
 function Footer() {
-  const cols: Array<[string, Array<[string, string]>]> = [
+  const cols = [
     ["产品", [["产品能力", "/product"], ["工作方式", "/method"], ["真实数据", "/data"], ["证据体系", "/evidence-system"], ["决策系统", "/decision-system"]]],
     ["公司", [["关于", "/about"]]],
     ["法律", [["用户协议", "/terms"], ["隐私政策", "/privacy"], ["AI 与数据声明", "/ai-data"]]],
     ["账户", [["登录", "/login"], ["开始分析", "/register"]]],
-  ];
+  ] as const;
   return (
     <footer className="border-t border-glass-edge px-5 py-14">
       <div className="mx-auto grid max-w-[1280px] gap-10 lg:grid-cols-[1.2fr_2.4fr]">
