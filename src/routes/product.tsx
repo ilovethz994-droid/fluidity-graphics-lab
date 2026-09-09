@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { ContentPage } from "@/components/lumbyte/marketing";
+export const Route=createFileRoute("/product")({head:()=>({meta:[{title:"产品｜Lumbyte OS"},{name:"description",content:"了解 Lumbyte OS 产品能力。"},{property:"og:title",content:"产品｜Lumbyte OS"},{property:"og:description",content:"证据驱动的创业决策系统。"}]}),component:()=> <ContentPage type="product"/>});

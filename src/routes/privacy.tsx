@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { ContentPage } from "@/components/lumbyte/marketing";
+export const Route=createFileRoute("/privacy")({head:()=>({meta:[{title:"隐私政策｜Lumbyte OS"},{name:"description",content:"Lumbyte OS 隐私政策。"},{property:"og:title",content:"隐私政策｜Lumbyte OS"},{property:"og:description",content:"了解数据处理与用户权利。"}]}),component:()=> <ContentPage type="privacy"/>});

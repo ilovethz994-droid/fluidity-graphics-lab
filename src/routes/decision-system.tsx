@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { ContentPage } from "@/components/lumbyte/marketing";
+export const Route=createFileRoute("/decision-system")({head:()=>({meta:[{title:"决策系统｜Lumbyte OS"},{name:"description",content:"了解 Lumbyte 的可解释决策系统。"},{property:"og:title",content:"决策系统｜Lumbyte OS"},{property:"og:description",content:"结论随着证据与关键未知持续更新。"}]}),component:()=> <ContentPage type="decision-system"/>});

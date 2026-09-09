@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
+      { title: "Lumbyte OS" },
       { name: "description", content: "Lumbyte OS 创业决策智能系统" },
       { name: "author", content: "Lumbyte OS" },
       { property: "og:title", content: "Lumbyte OS｜先查证，再判断" },

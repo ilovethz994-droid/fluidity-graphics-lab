@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { ContentPage } from "@/components/lumbyte/marketing";
+export const Route=createFileRoute("/ai-data")({head:()=>({meta:[{title:"AI 与数据声明｜Lumbyte OS"},{name:"description",content:"Lumbyte OS 的 AI 与数据原则。"},{property:"og:title",content:"AI 与数据声明｜Lumbyte OS"},{property:"og:description",content:"AI 推理不会被冒充成事实。"}]}),component:()=> <ContentPage type="ai-data"/>});
