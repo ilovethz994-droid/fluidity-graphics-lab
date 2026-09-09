@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AiDataRouteImport } from './routes/ai-data'
 import { Route as DataRouteImport } from './routes/data'
 import { Route as DecisionSystemRouteImport } from './routes/decision-system'
+import { Route as DesignReviewRouteImport } from './routes/design-review'
 import { Route as EvidenceSystemRouteImport } from './routes/evidence-system'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MethodRouteImport } from './routes/method'
@@ -50,6 +51,11 @@ const DataRoute = DataRouteImport.update({
 const DecisionSystemRoute = DecisionSystemRouteImport.update({
   id: '/decision-system',
   path: '/decision-system',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignReviewRoute = DesignReviewRouteImport.update({
+  id: '/design-review',
+  path: '/design-review',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EvidenceSystemRoute = EvidenceSystemRouteImport.update({
@@ -119,6 +125,7 @@ export interface FileRoutesByFullPath {
   '/ai-data': typeof AiDataRoute
   '/data': typeof DataRoute
   '/decision-system': typeof DecisionSystemRoute
+  '/design-review': typeof DesignReviewRoute
   '/evidence-system': typeof EvidenceSystemRoute
   '/login': typeof LoginRoute
   '/method': typeof MethodRoute
@@ -138,6 +145,7 @@ export interface FileRoutesByTo {
   '/ai-data': typeof AiDataRoute
   '/data': typeof DataRoute
   '/decision-system': typeof DecisionSystemRoute
+  '/design-review': typeof DesignReviewRoute
   '/evidence-system': typeof EvidenceSystemRoute
   '/login': typeof LoginRoute
   '/method': typeof MethodRoute
@@ -158,6 +166,7 @@ export interface FileRoutesById {
   '/ai-data': typeof AiDataRoute
   '/data': typeof DataRoute
   '/decision-system': typeof DecisionSystemRoute
+  '/design-review': typeof DesignReviewRoute
   '/evidence-system': typeof EvidenceSystemRoute
   '/login': typeof LoginRoute
   '/method': typeof MethodRoute
@@ -179,6 +188,7 @@ export interface FileRouteTypes {
     | '/ai-data'
     | '/data'
     | '/decision-system'
+    | '/design-review'
     | '/evidence-system'
     | '/login'
     | '/method'
@@ -198,6 +208,7 @@ export interface FileRouteTypes {
     | '/ai-data'
     | '/data'
     | '/decision-system'
+    | '/design-review'
     | '/evidence-system'
     | '/login'
     | '/method'
@@ -217,6 +228,7 @@ export interface FileRouteTypes {
     | '/ai-data'
     | '/data'
     | '/decision-system'
+    | '/design-review'
     | '/evidence-system'
     | '/login'
     | '/method'
@@ -237,6 +249,7 @@ export interface RootRouteChildren {
   AiDataRoute: typeof AiDataRoute
   DataRoute: typeof DataRoute
   DecisionSystemRoute: typeof DecisionSystemRoute
+  DesignReviewRoute: typeof DesignReviewRoute
   EvidenceSystemRoute: typeof EvidenceSystemRoute
   LoginRoute: typeof LoginRoute
   MethodRoute: typeof MethodRoute
@@ -286,6 +299,13 @@ declare module '@tanstack/react-router' {
       path: '/decision-system'
       fullPath: '/decision-system'
       preLoaderRoute: typeof DecisionSystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design-review': {
+      id: '/design-review'
+      path: '/design-review'
+      fullPath: '/design-review'
+      preLoaderRoute: typeof DesignReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/evidence-system': {
@@ -381,6 +401,7 @@ const rootRouteChildren: RootRouteChildren = {
   AiDataRoute: AiDataRoute,
   DataRoute: DataRoute,
   DecisionSystemRoute: DecisionSystemRoute,
+  DesignReviewRoute: DesignReviewRoute,
   EvidenceSystemRoute: EvidenceSystemRoute,
   LoginRoute: LoginRoute,
   MethodRoute: MethodRoute,
