@@ -19,6 +19,7 @@ import { Route as EvidenceSystemRouteImport } from './routes/evidence-system'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MethodRouteImport } from './routes/method'
+import { Route as PlansRouteImport } from './routes/plans'
 import { Route as PricingPlanRouteImport } from './routes/pricing-plan'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProductRouteImport } from './routes/product'
@@ -79,6 +80,11 @@ const MethodRoute = MethodRouteImport.update({
   path: '/method',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlansRoute = PlansRouteImport.update({
+  id: '/plans',
+  path: '/plans',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PricingPlanRoute = PricingPlanRouteImport.update({
   id: '/pricing-plan',
   path: '/pricing-plan',
@@ -136,6 +142,7 @@ export interface FileRoutesByFullPath {
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/method': typeof MethodRoute
+  '/plans': typeof PlansRoute
   '/pricing-plan': typeof PricingPlanRoute
   '/privacy': typeof PrivacyRoute
   '/product': typeof ProductRoute
@@ -157,6 +164,7 @@ export interface FileRoutesByTo {
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/method': typeof MethodRoute
+  '/plans': typeof PlansRoute
   '/pricing-plan': typeof PricingPlanRoute
   '/privacy': typeof PrivacyRoute
   '/product': typeof ProductRoute
@@ -179,6 +187,7 @@ export interface FileRoutesById {
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/method': typeof MethodRoute
+  '/plans': typeof PlansRoute
   '/pricing-plan': typeof PricingPlanRoute
   '/privacy': typeof PrivacyRoute
   '/product': typeof ProductRoute
@@ -202,6 +211,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/login'
     | '/method'
+    | '/plans'
     | '/pricing-plan'
     | '/privacy'
     | '/product'
@@ -223,6 +233,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/login'
     | '/method'
+    | '/plans'
     | '/pricing-plan'
     | '/privacy'
     | '/product'
@@ -244,6 +255,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/login'
     | '/method'
+    | '/plans'
     | '/pricing-plan'
     | '/privacy'
     | '/product'
@@ -266,6 +278,7 @@ export interface RootRouteChildren {
   HowItWorksRoute: typeof HowItWorksRoute
   LoginRoute: typeof LoginRoute
   MethodRoute: typeof MethodRoute
+  PlansRoute: typeof PlansRoute
   PricingPlanRoute: typeof PricingPlanRoute
   PrivacyRoute: typeof PrivacyRoute
   ProductRoute: typeof ProductRoute
@@ -349,6 +362,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MethodRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/plans': {
+      id: '/plans'
+      path: '/plans'
+      fullPath: '/plans'
+      preLoaderRoute: typeof PlansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pricing-plan': {
       id: '/pricing-plan'
       path: '/pricing-plan'
@@ -426,6 +446,7 @@ const rootRouteChildren: RootRouteChildren = {
   HowItWorksRoute: HowItWorksRoute,
   LoginRoute: LoginRoute,
   MethodRoute: MethodRoute,
+  PlansRoute: PlansRoute,
   PricingPlanRoute: PricingPlanRoute,
   PrivacyRoute: PrivacyRoute,
   ProductRoute: ProductRoute,
