@@ -120,27 +120,27 @@ function ProductPreview() {
 const dataScale = [["17,202+", "合格真实观测数据"], ["30+", "国家与地区"], ["65+", "标准化指标"], ["1,003+", "真实来源"]] as const;
 
 /* ---------- 07 Capabilities ---------- */
-const primaryCaps: Array<[LucideIcon, string, string]> = [
-  [ShieldCheck, "证据", "每个重要结论都能回到具体来源、地区与核验时间。"],
-  [Scale, "决策", "给出当前建议，并说明什么条件会改变结论。"],
+const primaryCaps: Array<[LucideIcon, string, string, string]> = [
+  [ShieldCheck, "证据", "每个重要结论都能回到具体来源、地区与核验时间。", "使用场景：当你需要向合伙人或投资人解释“这个判断依据什么”，可以直接打开证据台账，看到该结论属于已验证事实、市场信号还是尚未验证。"],
+  [Scale, "决策", "给出当前建议，并说明什么条件会改变结论。", "使用场景：当你在“继续投入”和“先验证一件事”之间犹豫时，决策页会告诉你当前建议、支持因素、不利因素，以及哪一个未知一旦确认就会改变结论。"],
 ];
-const supportCaps: Array<[LucideIcon, string, string]> = [
-  [Layers, "行业", "边界、细分、趋势与约束"],
-  [Users, "客户", "用户、购买者与决策者"],
-  [GitCompareArrows, "竞品", "直接、间接与替代方案"],
-  [Target, "定价", "公开价格与价格状态"],
-  [BookOpenCheck, "商业模式", "价值主张与收入结构"],
-  [CircleHelp, "风险", "关键假设与失败条件"],
+const supportCaps: Array<[LucideIcon, string, string, string]> = [
+  [Layers, "行业", "边界、细分、趋势与约束", "先确认你进入的是哪个市场，再判断机会是否存在。"],
+  [Users, "客户", "用户、购买者与决策者", "分清谁在用、谁付钱、谁最终拍板，避免对错误的人做验证。"],
+  [GitCompareArrows, "竞品", "直接、间接与替代方案", "包含客户当前的手工做法，而不只是同类公司清单。"],
+  [Target, "定价", "公开价格与价格状态", "价格未公开时保留状态，用于判断你的定价空间。"],
+  [BookOpenCheck, "商业模式", "价值主张与收入结构", "把交付方式、收入来源与成本结构写成可以被检验的结构。"],
+  [CircleHelp, "风险", "关键假设与失败条件", "提前写出“什么情况下这个项目不成立”，而不是事后解释。"],
 ];
 
-const stages = [
-  ["01", "描述创业想法", "用户只需要描述产品、客户与目标方向。"],
-  ["02", "拆解研究问题", "灵蕴将模糊问题拆解为行业、客户、竞品、定价、财务和风险研究。"],
-  ["03", "寻找真实证据", "优先复用已经验证的数据，并在需要时补充公开来源。"],
-  ["04", "形成分析", "把已验证事实、市场信号、估算、推断和未知分开处理。"],
-  ["05", "构建模型", "将关键商业假设进入财务和风险判断。"],
-  ["06", "形成决策", "给出建议推进、有条件推进或当前不建议推进，并生成下一步验证事项。"],
-] as const;
+const stages: Array<[string, string, string, string]> = [
+  ["01", "输入创业想法", "用户只需要描述产品、客户与目标方向。", "例如：为小型创业团队提供基于证据的早期决策工作区，目标市场中国大陆。"],
+  ["02", "拆解研究问题", "灵蕴将模糊问题拆解为行业、客户、竞品、定价、财务和风险研究。", "系统会先列出需要回答的问题清单，你可以增删研究范围。"],
+  ["03", "寻找真实证据", "优先复用已经验证的数据，并在需要时补充公开来源。", "每条证据会记录来源、地区、数据周期与最近核验时间。"],
+  ["04", "分析市场与客户", "把已验证事实、市场信号、估算、推断和未知分开处理。", "客户页会区分实际用户、购买者与决策者，痛点按证据强度排序。"],
+  ["05", "构建财务与风险模型", "将关键商业假设进入财务和风险判断。", "假设可以逐项编辑，结果随输入重新计算，缺少输入时保持“尚未验证”。"],
+  ["06", "形成决策与验证计划", "给出建议推进、有条件推进或当前不建议推进。", "同时生成排序后的验证清单，以及会改变结论的条件。"],
+];
 
 const evidenceRows = [
   ["目标流程普遍依赖多个分散工具", "已验证事实", "公开产品文档集合", "中国大陆", "最近 12 个月", "今天"],
@@ -152,16 +152,39 @@ const evidenceRows = [
 ] as const;
 
 const competitorRows = [
-  ["综合协作套件", "间接竞品", "通用协作", "中大型团队", "公开价格", "今天"],
-  ["市场研究服务", "替代方案", "人工研究交付", "融资阶段团队", "联系销售", "今天"],
-  ["通用问答助手", "替代方案", "即时回答", "个人用户", "公开价格", "今天"],
-  ["行业数据库", "间接竞品", "数据订阅", "投资与咨询", "未公开具体价格", "待核验"],
+  ["综合协作套件", "间接竞品", "通用协作与文档", "中大型团队", "公开价格：按席位年付", "今天"],
+  ["市场研究服务", "替代方案", "人工研究交付", "融资阶段团队", "联系销售：按项目报价", "今天"],
+  ["通用问答助手", "替代方案", "即时回答", "个人用户", "公开价格：个人订阅制", "今天"],
+  ["行业数据库", "间接竞品", "数据订阅", "投资与咨询机构", "未公开具体价格", "待核验"],
+  ["电子表格 + 人工整理", "客户当前做法", "自行搜集与汇总", "早期创业团队", "无直接费用，成本为时间", "今天"],
 ] as const;
 
-const financeMetrics = ["MRR", "ARR", "毛利率", "CAC", "LTV", "Burn", "Runway", "盈亏平衡"];
-const assumptions = [["ARPU", "尚未验证"], ["CAC", "尚未验证"], ["客户数量", "用户提供"], ["流失率", "估算"], ["毛利率", "估算"], ["固定成本", "用户提供"]] as const;
+const financeMetrics: Array<[string, string, string]> = [
+  ["MRR", "尚未验证", "缺少真实成交"],
+  ["ARR", "尚未验证", "依赖 MRR"],
+  ["毛利率", "72%", "按估算成本计算"],
+  ["CAC", "尚未验证", "缺少获客数据"],
+  ["LTV", "尚未验证", "依赖流失率"],
+  ["Burn", "¥46,000 / 月", "用户提供成本项"],
+  ["Runway", "9 个月", "按用户提供余额计算"],
+  ["盈亏平衡", "尚未验证", "依赖 CAC 与 ARPU"],
+];
+const assumptions: Array<[string, string, string]> = [
+  ["ARPU", "待补充", "尚未验证"],
+  ["CAC", "待补充", "尚未验证"],
+  ["客户数量", "首批 12 家目标客户", "用户提供"],
+  ["流失率", "月度 4%", "估算"],
+  ["毛利率", "72%", "估算"],
+  ["固定成本", "¥46,000 / 月", "用户提供"],
+];
 
 const reportSections = ["执行摘要", "当前决策", "行业", "客户", "竞品", "定价", "商业模式", "财务", "风险", "关键假设", "尚未验证", "决策翻转条件", "下一步验证", "来源"];
+const reportExcerpt: Array<[string, string]> = [
+  ["执行摘要", "目标客户在早期决策阶段确实缺少可追溯的研究流程，问题信号明确；但付费意愿与获客成本尚未验证，建议以有条件推进方式继续。"],
+  ["当前判断", "有条件推进。证据置信度为部分确认，决策置信度为中等。"],
+  ["关键未知", "首批客户真实付费意愿、可持续获客成本、决策者与实际使用者是否为同一人。"],
+  ["下一步验证", "先完成 12 家目标客户的付费意愿访谈，再测试一条可重复的获客路径。"],
+];
 const audiences = ["早期创业者", "独立开发者", "学生创业团队", "创业项目负责人", "企业创新团队", "创业教育与研究场景"];
 
 export function HomePage() {
@@ -182,6 +205,24 @@ export function HomePage() {
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <Button size="lg" asChild><Link to="/register">开始分析 <ArrowRight /></Link></Button>
             <Button size="lg" variant="outline" asChild><Link to="/method">了解工作方式</Link></Button>
+          </div>
+
+          {/* 第一屏即可读完：决策链路 + 真实数据规模 */}
+          <div className="mx-auto mt-9 flex max-w-4xl flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[12px] text-muted-foreground">
+            {["真实数据", "证据", "分析", "财务与风险模型", "可解释的判断"].map((x, i) => (
+              <span key={x} className="flex items-center gap-3">
+                {i > 0 && <span className="h-px w-6 bg-border" />}
+                <span className="rounded-full border border-border bg-glass px-3 py-1.5">{x}</span>
+              </span>
+            ))}
+          </div>
+          <div className="mx-auto mt-7 grid max-w-4xl grid-cols-2 gap-y-5 sm:grid-cols-4">
+            {dataScale.map(([n, d]) => (
+              <div key={n}>
+                <div className="text-[clamp(1.25rem,1.7vw,1.75rem)] font-semibold leading-none">{n}</div>
+                <div className="mt-1.5 text-[12px] text-muted-foreground">{d}</div>
+              </div>
+            ))}
           </div>
         </div>
         <ProductPreview />
@@ -250,12 +291,13 @@ export function HomePage() {
           从一个想法，<br />到一个可以行动的判断。
         </h2>
         <div className="mt-12 grid gap-x-8 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
-          {stages.map(([n, t, d]) => (
+          {stages.map(([n, t, d, scene]) => (
             <div key={n} className="relative border-t border-border pt-5">
               <div className="absolute -top-[7px] left-0 h-3.5 w-3.5 rounded-full border border-border bg-background" />
               <span className="text-xs font-semibold text-violet-soft">{n}</span>
               <h3 className="mt-2.5 text-[15px] font-semibold">{t}</h3>
               <p className="mt-2 text-[13px] leading-6 text-muted-foreground">{d}</p>
+              <p className="mt-3 border-l border-border pl-3 text-[12px] leading-6 text-ink-soft">{scene}</p>
             </div>
           ))}
         </div>
@@ -271,20 +313,22 @@ export function HomePage() {
           <p className="text-sm leading-7 text-muted-foreground">从市场研究到最终决策，所有信息围绕同一个创业项目持续积累。</p>
         </div>
         <div className="mt-10 grid gap-3 lg:grid-cols-2">
-          {primaryCaps.map(([Icon, t, d]) => (
+          {primaryCaps.map(([Icon, t, d, scene]) => (
             <GlassPanel key={t} className="p-7">
               <Icon className="h-5 w-5 text-violet-soft" />
               <h3 className="mt-8 text-2xl font-semibold">{t}</h3>
               <p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">{d}</p>
+              <p className="mt-4 border-t border-border pt-4 text-[13px] leading-6 text-ink-soft">{scene}</p>
             </GlassPanel>
           ))}
         </div>
         <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {supportCaps.map(([Icon, t, d]) => (
+          {supportCaps.map(([Icon, t, d, scene]) => (
             <GlassCard key={t} className="p-5">
               <Icon className="h-4 w-4 text-violet-soft" />
               <h3 className="mt-5 text-[15px] font-semibold">{t}</h3>
               <p className="mt-1.5 text-[13px] leading-5 text-muted-foreground">{d}</p>
+              <p className="mt-3 text-[12px] leading-6 text-ink-soft">{scene}</p>
             </GlassCard>
           ))}
         </div>
@@ -294,12 +338,14 @@ export function HomePage() {
               <Wallet className="h-5 w-5 text-violet-soft" />
               <h3 className="mt-6 text-2xl font-semibold">财务</h3>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">关键财务结果来自明确输入和确定性计算，不由模型猜测。</p>
+              <p className="mt-4 text-[13px] leading-6 text-ink-soft">使用场景：填入客单价、客户数量与成本项后，系统会计算结果；输入缺失的指标保持“尚未验证”。</p>
             </div>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-              {financeMetrics.map((m) => (
+              {financeMetrics.map(([m, v, note]) => (
                 <div key={m} className="rounded-xl border border-border px-3 py-3">
                   <div className="text-[11px] text-muted-foreground">{m}</div>
-                  <div className="mt-1.5 text-[12px] font-semibold">尚未验证</div>
+                  <div className="mt-1.5 text-[12px] font-semibold">{v}</div>
+                  <div className="mt-1 text-[10px] leading-4 text-muted-foreground">{note}</div>
                 </div>
               ))}
             </div>
@@ -430,20 +476,24 @@ export function HomePage() {
               <StatusBadge tone="warn">设计预览</StatusBadge>
             </div>
             <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
-              {financeMetrics.map((m) => (
+              {financeMetrics.map(([m, v, note]) => (
                 <GlassCard key={m} className="p-3.5">
                   <div className="text-[10px] text-muted-foreground">{m}</div>
-                  <div className="mt-2 text-[12px] font-semibold">尚未验证</div>
+                  <div className="mt-2 text-[12px] font-semibold">{v}</div>
+                  <div className="mt-1 text-[10px] leading-4 text-muted-foreground">{note}</div>
                 </GlassCard>
               ))}
             </div>
             <div className="mt-6 border-t border-border pt-5">
-              <div className="text-[11px] font-semibold text-muted-foreground">关键假设</div>
+              <div className="grid grid-cols-[minmax(0,1fr)_auto_auto] gap-4 text-[11px] font-semibold text-muted-foreground">
+                <span>关键假设</span><span>示例输入</span><span>来源状态</span>
+              </div>
               <div className="mt-3 divide-y divide-border">
-                {assumptions.map(([k, v]) => (
-                  <div key={k} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-2.5">
+                {assumptions.map(([k, v, origin]) => (
+                  <div key={k} className="grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-4 py-2.5">
                     <span className="truncate text-[13px]">{k}</span>
-                    <span className="shrink-0 text-[12px] text-muted-foreground">{v}</span>
+                    <span className="shrink-0 text-[12px] font-medium">{v}</span>
+                    <span className="shrink-0 text-[12px] text-muted-foreground">{origin}</span>
                   </div>
                 ))}
               </div>
@@ -574,6 +624,17 @@ export function HomePage() {
                   <span className="truncate text-[13px]">{x}</span>
                 </div>
               ))}
+            </div>
+            <div className="mt-6 border-t border-border pt-5">
+              <div className="text-[11px] font-semibold text-muted-foreground">报告节选</div>
+              <div className="mt-4 space-y-4">
+                {reportExcerpt.map(([k, v]) => (
+                  <div key={k}>
+                    <div className="text-[13px] font-semibold">{k}</div>
+                    <p className="mt-1.5 text-[13px] leading-6 text-muted-foreground">{v}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </GlassPanel>
         </div>
