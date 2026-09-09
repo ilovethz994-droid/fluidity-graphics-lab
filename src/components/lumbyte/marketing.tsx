@@ -206,6 +206,24 @@ export function HomePage() {
             <Button size="lg" asChild><Link to="/register">开始分析 <ArrowRight /></Link></Button>
             <Button size="lg" variant="outline" asChild><Link to="/method">了解工作方式</Link></Button>
           </div>
+
+          {/* 第一屏即可读完：决策链路 + 真实数据规模 */}
+          <div className="mx-auto mt-9 flex max-w-4xl flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[12px] text-muted-foreground">
+            {["真实数据", "证据", "分析", "财务与风险模型", "可解释的判断"].map((x, i) => (
+              <span key={x} className="flex items-center gap-3">
+                {i > 0 && <span className="h-px w-6 bg-border" />}
+                <span className="rounded-full border border-border bg-glass px-3 py-1.5">{x}</span>
+              </span>
+            ))}
+          </div>
+          <div className="mx-auto mt-7 grid max-w-4xl grid-cols-2 gap-y-5 sm:grid-cols-4">
+            {dataScale.map(([n, d]) => (
+              <div key={n}>
+                <div className="text-[clamp(1.25rem,1.7vw,1.75rem)] font-semibold leading-none">{n}</div>
+                <div className="mt-1.5 text-[12px] text-muted-foreground">{d}</div>
+              </div>
+            ))}
+          </div>
         </div>
         <ProductPreview />
       </section>
@@ -273,12 +291,13 @@ export function HomePage() {
           从一个想法，<br />到一个可以行动的判断。
         </h2>
         <div className="mt-12 grid gap-x-8 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
-          {stages.map(([n, t, d]) => (
+          {stages.map(([n, t, d, scene]) => (
             <div key={n} className="relative border-t border-border pt-5">
               <div className="absolute -top-[7px] left-0 h-3.5 w-3.5 rounded-full border border-border bg-background" />
               <span className="text-xs font-semibold text-violet-soft">{n}</span>
               <h3 className="mt-2.5 text-[15px] font-semibold">{t}</h3>
               <p className="mt-2 text-[13px] leading-6 text-muted-foreground">{d}</p>
+              <p className="mt-3 border-l border-border pl-3 text-[12px] leading-6 text-ink-soft">{scene}</p>
             </div>
           ))}
         </div>
@@ -294,20 +313,22 @@ export function HomePage() {
           <p className="text-sm leading-7 text-muted-foreground">从市场研究到最终决策，所有信息围绕同一个创业项目持续积累。</p>
         </div>
         <div className="mt-10 grid gap-3 lg:grid-cols-2">
-          {primaryCaps.map(([Icon, t, d]) => (
+          {primaryCaps.map(([Icon, t, d, scene]) => (
             <GlassPanel key={t} className="p-7">
               <Icon className="h-5 w-5 text-violet-soft" />
               <h3 className="mt-8 text-2xl font-semibold">{t}</h3>
               <p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">{d}</p>
+              <p className="mt-4 border-t border-border pt-4 text-[13px] leading-6 text-ink-soft">{scene}</p>
             </GlassPanel>
           ))}
         </div>
         <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {supportCaps.map(([Icon, t, d]) => (
+          {supportCaps.map(([Icon, t, d, scene]) => (
             <GlassCard key={t} className="p-5">
               <Icon className="h-4 w-4 text-violet-soft" />
               <h3 className="mt-5 text-[15px] font-semibold">{t}</h3>
               <p className="mt-1.5 text-[13px] leading-5 text-muted-foreground">{d}</p>
+              <p className="mt-3 text-[12px] leading-6 text-ink-soft">{scene}</p>
             </GlassCard>
           ))}
         </div>
@@ -317,12 +338,14 @@ export function HomePage() {
               <Wallet className="h-5 w-5 text-violet-soft" />
               <h3 className="mt-6 text-2xl font-semibold">财务</h3>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">关键财务结果来自明确输入和确定性计算，不由模型猜测。</p>
+              <p className="mt-4 text-[13px] leading-6 text-ink-soft">使用场景：填入客单价、客户数量与成本项后，系统会计算结果；输入缺失的指标保持“尚未验证”。</p>
             </div>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-              {financeMetrics.map((m) => (
+              {financeMetrics.map(([m, v, note]) => (
                 <div key={m} className="rounded-xl border border-border px-3 py-3">
                   <div className="text-[11px] text-muted-foreground">{m}</div>
-                  <div className="mt-1.5 text-[12px] font-semibold">尚未验证</div>
+                  <div className="mt-1.5 text-[12px] font-semibold">{v}</div>
+                  <div className="mt-1 text-[10px] leading-4 text-muted-foreground">{note}</div>
                 </div>
               ))}
             </div>
@@ -453,20 +476,24 @@ export function HomePage() {
               <StatusBadge tone="warn">设计预览</StatusBadge>
             </div>
             <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
-              {financeMetrics.map((m) => (
+              {financeMetrics.map(([m, v, note]) => (
                 <GlassCard key={m} className="p-3.5">
                   <div className="text-[10px] text-muted-foreground">{m}</div>
-                  <div className="mt-2 text-[12px] font-semibold">尚未验证</div>
+                  <div className="mt-2 text-[12px] font-semibold">{v}</div>
+                  <div className="mt-1 text-[10px] leading-4 text-muted-foreground">{note}</div>
                 </GlassCard>
               ))}
             </div>
             <div className="mt-6 border-t border-border pt-5">
-              <div className="text-[11px] font-semibold text-muted-foreground">关键假设</div>
+              <div className="grid grid-cols-[minmax(0,1fr)_auto_auto] gap-4 text-[11px] font-semibold text-muted-foreground">
+                <span>关键假设</span><span>示例输入</span><span>来源状态</span>
+              </div>
               <div className="mt-3 divide-y divide-border">
-                {assumptions.map(([k, v]) => (
-                  <div key={k} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-2.5">
+                {assumptions.map(([k, v, origin]) => (
+                  <div key={k} className="grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-4 py-2.5">
                     <span className="truncate text-[13px]">{k}</span>
-                    <span className="shrink-0 text-[12px] text-muted-foreground">{v}</span>
+                    <span className="shrink-0 text-[12px] font-medium">{v}</span>
+                    <span className="shrink-0 text-[12px] text-muted-foreground">{origin}</span>
                   </div>
                 ))}
               </div>
@@ -597,6 +624,17 @@ export function HomePage() {
                   <span className="truncate text-[13px]">{x}</span>
                 </div>
               ))}
+            </div>
+            <div className="mt-6 border-t border-border pt-5">
+              <div className="text-[11px] font-semibold text-muted-foreground">报告节选</div>
+              <div className="mt-4 space-y-4">
+                {reportExcerpt.map(([k, v]) => (
+                  <div key={k}>
+                    <div className="text-[13px] font-semibold">{k}</div>
+                    <p className="mt-1.5 text-[13px] leading-6 text-muted-foreground">{v}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </GlassPanel>
         </div>
